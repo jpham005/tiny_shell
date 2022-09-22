@@ -5,7 +5,8 @@
 #include "readline.h"
 
 #include "exit_status.h"
-#include "util.h"
+
+void  error_exit(const char* str);
 
 static const char* const signal_error_message = "setting signal fail";
 

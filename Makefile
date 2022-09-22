@@ -1,6 +1,6 @@
 NAME	:=	tinyshell
 
-SRCS	:=	main.c util.c terminal.c signal_setter.c
+SRCS	:=	main.c util.c terminal.c signal_setter.c loop.c tokenize.c t_token.c tokenize_util.c
 SRCS	:=	$(addprefix src/, $(SRCS))
 OBJS	:=	$(SRCS:.c=.o)
 
@@ -26,7 +26,7 @@ libft:
 
 $(READLINE):
 	cd readline; ./configure
-	make -C $(READLINE_DIR) all
+	$(MAKE) -j8 -C $(READLINE_DIR) all
 
 %.o	:	%.c
 	$(CC) $(CFLAGS) -c $< -o $@ -I$(LIBFT_DIR) -I$(READLINE_DIR) -I$(INCLUDE_DIR)
@@ -39,8 +39,8 @@ clean	:
 .PHONY:	fclean
 fclean	:	clean
 	$(RM) $(NAME)
-	$(MAKE) -j8 -C $(LIBFT_DIR) fclean
-	$(MAKE) -j8 -C $(READLINE_DIR) clean
+#	$(MAKE) -j8 -C $(LIBFT_DIR) fclean
+#	$(MAKE) -j8 -C $(READLINE_DIR) clean
 
 
 .PHONY:	re

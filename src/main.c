@@ -2,13 +2,11 @@
 #include <stdlib.h>
 #include <termios.h>
 
-#include "defines.h"
-#include "util.h"
-
 extern char** environ;
-int exit_status;
 
+void  exit_shell(const char* str, int stat);
 void  init_term(struct termios* term_stat);
+void  run_loop(struct termios* term_stat);
 
 static void check_valid_start() {
   if (!(isatty(STDIN_FILENO) && isatty(STDERR_FILENO)))
@@ -20,6 +18,5 @@ int main() {
 
   check_valid_start();
   init_term(&term_stat);
-  readline("test> ");
-//  exit(run_loop());
+  run_loop(&term_stat);
 }

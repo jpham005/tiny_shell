@@ -6,13 +6,12 @@
 #include "readline.h"
 
 #include "defines.h"
-#include "util.h"
-
 
 void set_default_term_sig();
 void set_heredoc_child_term_sig();
 void set_execute_parent_term_sig();
 void set_execute_child_term_sig();
+void exit_shell(const char* str, int stat);
 
 void  set_signal(t_signal_level level) {
   static void (*signal_setter[MAX_SIGNAL_LEVEL])() = {
