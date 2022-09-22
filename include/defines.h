@@ -4,6 +4,7 @@
 typedef enum e_token_type t_token_type;
 typedef t_token_type t_redir_type;
 typedef enum e_bool t_bool;
+typedef enum e_signal_level t_signal_level;
 
 enum e_token_type {
   WORD = 1 << 0,
@@ -18,6 +19,14 @@ enum e_token_type {
 enum e_bool {
   FALSE,
   TRUE
+};
+
+enum e_signal_level {
+  DEFAULT_TERM,
+  HEREDOC_CHILD_TERM,
+  EXECUTE_PARENT_TERM,
+  EXECUTE_CHILD_TERM,
+  MAX_SIGNAL_LEVEL
 };
 
 #endif
